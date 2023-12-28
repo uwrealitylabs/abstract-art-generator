@@ -13,3 +13,6 @@ bpy.ops.render.render(write_still=True)
 
 # complete
 print("Rendering is complete.")
+
+# run the CLI script using:
+# blender -b art.blend -P test.py
