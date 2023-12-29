@@ -1,14 +1,14 @@
 # Abstract Art Generator
 
-The Abstract Art Generator does exactly what it sounds like - it's designed to generate random abstract images through a Blender script. Assets in the /assets/ folder are imported into Blender, given random values for position, rotation and meterial, and then are rendered at a random camera position and focal length.
+The Abstract Art Generator does exactly what it sounds like - it's designed to generate random abstract images through a Blender script. Assets in the /assets/ folder are imported into Blender, given random values for position, rotation and material, and then are rendered at a random camera position and focal length.
 
 ## Setting up the environment
 
-### Install Blender:
+### Install Blender
 
 Download and install Blender from the official Blender website: [Blender Download](https://www.blender.org/download/)
 
-### Open Visual Studio Code:
+### Open Visual Studio Code
 
 If you don't have Visual Studio Code installed, download and install it from the official website: [Visual Studio Code Download](https://code.visualstudio.com/)
 
@@ -16,21 +16,21 @@ Install the "Blender Development" extension for Visual Studio Code. Open the Ext
 
 ![Blender Development Extension](images/extension.png)
 
-### Locate Blender Python Interpreter:
+### Locate Blender Python Interpreter
 
 Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g., /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
 
-### Configure Python Interpreter in VSCode:
+### Configure Python Interpreter in Visual Studio Code
 
 Open Visual Studio Code, go to the command palette (Ctrl+Shift+P), and run the command "Python: Select Interpreter." Choose the Blender Python interpreter path.
 
-### Restart VSCode:
+### Restart Visual Studio Code
 
 Restart Visual Studio Code to apply the changes.
 
-### Add Blender to your PATH environment (optional):
+### Add Blender to your PATH environment (optional)
 
-#### Windows:
+#### Windows
 
 1. Find the path to your Blender installation (e.g., `C:\Program Files\Blender Foundation\Blender`).
 
@@ -50,7 +50,7 @@ Restart Visual Studio Code to apply the changes.
 
 9. Open a new command prompt and type `blender` to verify that Blender launches.
 
-#### macOS and Linux:
+#### macOS and Linux
 
 1. Open a terminal.
 
