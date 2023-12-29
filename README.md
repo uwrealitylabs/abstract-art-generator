@@ -1,35 +1,38 @@
 # Abstract Art Generator
 
-Abstract Art Generator is made to do exactly what it sounds like: generate random images by scripting and automating Blender.
+The Abstract Art Generator is designed to generate random images by scripting and automating Blender.
 
 ## Setting up the environment
 
-Install Blender:
-Download and install Blender from the official Blender website: https://www.blender.org/download/
+### Install Blender:
 
-Open Visual Studio Code (this guide only provides instructions for this IDE):
-If you don't have Visual Studio Code installed, download and install it from the official website: https://code.visualstudio.com/
+Download and install Blender from the official Blender website: [Blender Download](https://www.blender.org/download/)
+
+### Open Visual Studio Code:
+
+If you don't have Visual Studio Code installed, download and install it from the official website: [Visual Studio Code Download](https://code.visualstudio.com/)
 
 Install the "Blender Development" extension for Visual Studio Code. Open the Extensions view (Ctrl+Shift+X) and search for "Blender Development." Install the extension.
 
-![This is what the extension should look like.](images/extension.png)
+![Blender Development Extension](images/extension.png)
 
-This is what the extension should look like.
+### Locate Blender Python Interpreter:
 
-Locate Blender Python Interpreter:
-Find the path to Blender's Python interpreter. This is typically located within the Blender application package. For example: /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10
+Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g., /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
 
-Configure Python Interpreter in VSCode:
-Open Visual Studio Code, go to the command palette (Ctrl+Shift+P) and run the command "Python: Select Interpreter." Choose the Blender Python interpreter path.
+### Configure Python Interpreter in VSCode:
 
-Restart VSCode:
+Open Visual Studio Code, go to the command palette (Ctrl+Shift+P), and run the command "Python: Select Interpreter." Choose the Blender Python interpreter path.
+
+### Restart VSCode:
+
 Restart Visual Studio Code to apply the changes.
 
-Next, add Blender to your PATH environment (optional). Below are general instructions for Windows, macOS, and Linux:
+### Add Blender to your PATH environment (optional):
 
-### Windows:
+#### Windows:
 
-1. Find the path to your Blender installation. This is typically something like `C:\Program Files\Blender Foundation\Blender` or `C:\Program Files\Blender Foundation\Blender [version]`.
+1. Find the path to your Blender installation (e.g., `C:\Program Files\Blender Foundation\Blender`).
 
 2. Copy the path to the Blender directory.
 
@@ -47,13 +50,13 @@ Next, add Blender to your PATH environment (optional). Below are general instruc
 
 9. Open a new command prompt and type `blender` to verify that Blender launches.
 
-### macOS and Linux:
+#### macOS and Linux:
 
 1. Open a terminal.
 
-2. Find the path to your Blender installation. This is typically something like `/Applications/Blender.app/Contents/MacOS` on macOS or `/opt/blender/blender [version]/` on Linux.
+2. Find the path to your Blender installation (e.g., `/Applications/Blender.app/Contents/MacOS` on macOS or `/opt/blender/blender [version]/` on Linux).
 
-3. Open your shell profile file. This could be `~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, or similar, depending on your shell. Use a text editor like `nano`, `vim`, or `gedit` to edit the file. For example:
+3. Open your shell profile file (`~/.bashrc`, `~/.bash_profile`, `~/.zshrc`, etc.) using a text editor like `nano`, `vim`, or `gedit`.
 
    ```bash
    nano ~/.bashrc
@@ -72,4 +75,3 @@ Next, add Blender to your PATH environment (optional). Below are general instruc
 7. Open a new terminal and type `blender` to verify that Blender launches.
 
 Keep in mind that the exact steps may vary depending on your system configuration and the specific shell you're using.
-
