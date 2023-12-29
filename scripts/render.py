@@ -79,10 +79,12 @@ dimensions = []
 for obj_file in obj_files:
 
     # Debuging purposes only
-    #if x <= 3:
-    #    x += 1
-    #    continue
-
+    """
+    if x <= 7:
+        x += 1
+        continue
+    """
+    
     old_objects = list(bpy.data.objects)
 
     obj_file_path = os.path.join(obj_path, obj_file)
@@ -148,7 +150,18 @@ scene = bpy.data.scenes["Scene"]
 scene.camera.rotation_euler[0] = c[0] * (pi / 180.0)
 scene.camera.rotation_euler[1] = c[1] * (pi / 180.0)
 scene.camera.rotation_euler[2] = c[2] * (pi / 180.0)
-            
+
+light = bpy.data.objects["Light"]
+light.location = (0, -10, 3)
+c = (70, 0, 0)
+pi = math.pi
+scene = bpy.data.scenes["Scene"]
+light.rotation_euler[0] = c[0] * (pi / 180.0)
+light.rotation_euler[1] = c[1] * (pi / 180.0)
+light.rotation_euler[2] = c[2] * (pi / 180.0)
+
+# Render
+bpy.ops.render.render(write_still=True)            
 
 bpy.context.active_object.scale= (50, 50, 50)
 
