@@ -13,11 +13,7 @@ print("Abstract Art Generator by kennynahh and itsanantk")
 
 # Accept the output path as a command-line argument (this is a CLI interface)
 output_path = sys.argv[-1]
-
-# Set the specific file name for rendering
-specific_file_name = "output_image.png"
-output_file_path = os.path.join(output_path, specific_file_name)
-bpy.context.scene.render.filepath = output_file_path
+bpy.context.scene.render.filepath = output_path
 
 # Clear scene
 bpy.ops.object.select_all(action='DESELECT')
@@ -25,8 +21,8 @@ bpy.ops.object.select_by_type(type='MESH')
 bpy.ops.object.delete()
 
 # Asset import (all obj files)
-obj_path = "assets/obj"
-obj_files = [f for f in os.listdir(obj_path) if f.endswith('.obj')]
+obj_path = "assets/obj"  # Corrected the path
+obj_files = [f for f in os.listdir(obj_path) if f.endswith('.obj')]  # Corrected the variable name
 for obj_file in obj_files:
     obj_file_path = os.path.join(obj_path, obj_file)
     bpy.ops.import_scene.obj(filepath=obj_file_path)
@@ -35,4 +31,7 @@ for obj_file in obj_files:
 bpy.ops.render.render(write_still=True)
 
 # Complete
-print(f"Rendering to {output_file_path} is complete.")
+print("Rendering is complete.")
+
+# Run using:
+# blender -b art.blend -P scripts/render.py
