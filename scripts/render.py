@@ -87,8 +87,9 @@ for obj_file in obj_files:
     bbd = list(findBoundingBoxDimensions(parent_object))
 
     # Scale objects to proportioinality
-    #scale_factor = 2 / (bbd[0]+bbd[1]+bbd[2]/3)  # Adjust this value as needed
-    scale_factor = 1 / (max(bbd))  # Adjust this value as needed
+    size = 1.5
+    #scale_factor = size / (bbd[0]+bbd[1]+bbd[2]/3)  # Adjust this value as needed
+    scale_factor = size / (max(bbd))  # Adjust this value as needed
     parent_object.scale = (scale_factor, scale_factor, scale_factor)
     bbd[0]*=scale_factor
     bbd[1]*=scale_factor
@@ -101,19 +102,20 @@ for obj_file in obj_files:
     """
 
     # Set random position for the object
-    location_range = 3
+    location_range = 3.5
     colliding = False
     searching = True
     while searching:
         parent_object.location = (
             random.uniform(-location_range, location_range),
-            random.uniform(-location_range, location_range),
-            random.uniform(-location_range/1.5, location_range/3)
+            random.uniform(0, 0),
+            random.uniform(-location_range/1.5, location_range/4)
         )
         colliding = False
         for i in range(len(locations)):
-            # If no x collision
+            # Check x collision
             if parent_object.location.x + bbd[0]/2 >= locations[i][0] - dimensions[i][0]/2 and parent_object.location.x - bbd[0] <= locations[i][0] + dimensions[i][0]/2:
+                    # Check y collision
                     if parent_object.location.z + bbd[1]/2 >= locations[i][2] - dimensions[i][1]/2 and parent_object.location.z - bbd[1]/2 <= locations[i][2] + dimensions[i][1]/2 :
                         #if parent_object.location.y + bbd[2]/2 >= locations[i][1] - dimensions[i][2]/2 and parent_object.location.y - bbd[2]/2 <= locations[i][1] + dimensions[i][2]/2 :
                             colliding = True
