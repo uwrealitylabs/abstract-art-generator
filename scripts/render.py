@@ -23,6 +23,19 @@ sys.path.append(blender_python_path)
 # Name
 print("Abstract Art Generator by kennynahh and itsanantk")
 
+# Prompt the user to choose the rendering engine
+render_engine_choice = input("Choose rendering engine ('C' or 'E' for Cycles or Eevee): ").strip().upper()
+
+# Validate the user input and set the rendering engine accordingly (case-insensitive)
+if render_engine_choice in ['C', 'CYCLES']:
+    bpy.context.scene.render.engine = 'CYCLES'
+elif render_engine_choice in ['E', 'EEVEE']:
+    bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+else:
+    print("Invalid choice. Defaulting to Eevee.")
+    bpy.context.scene.render.engine = 'BLENDER_EEVEE'
+
+
 # Accept the output path as a command-line argument (this is a CLI interface)
 output_path = sys.argv[-1]
 bpy.context.scene.render.filepath = output_path
@@ -138,25 +151,6 @@ scene.camera.rotation_euler[2] = c[2] * (pi / 180.0)
             
 
 bpy.context.active_object.scale= (50, 50, 50)
-
-# Prompt the user to choose the rendering engine
-render_engine_choice = input("Choose rendering engine ('C' or 'E' for Cycles or Eevee): ").strip().upper()
-
-# Validate the user input and set the rendering engine accordingly (case-insensitive)
-if render_engine_choice in ['C', 'CYCLES']:
-    bpy.context.scene.render.engine = 'CYCLES'
-elif render_engine_choice in ['E', 'EEVEE']:
-    bpy.context.scene.render.engine = 'BLENDER_EEVEE'
-else:
-    print("Invalid choice. Defaulting to Eevee.")
-    bpy.context.scene.render.engine = 'BLENDER_EEVEE'
-
-# Render
-bpy.ops.render.render(write_still=True)
-
-# Complete
-print("Rendering is complete.")
-
 
 # Render
 bpy.ops.render.render(write_still=True)
