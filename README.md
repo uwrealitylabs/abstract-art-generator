@@ -2,6 +2,10 @@
 
 The Abstract Art Generator does exactly what it sounds like - it's designed to generate random abstract images through a Blender script. Assets in the /assets/ folder are imported into Blender, given random values for position, rotation and material, and then are rendered at a random camera position and focal length.
 
+Here's what one render might look like:
+
+![Example Abstract Art Generated Render](images/example.png)
+
 ## Setting up the environment
 
 Clone the repository.
