@@ -1,7 +1,7 @@
 import sys
 import os
 
-# Add the path to Blender's Python to sys.path (Blender 3.6 LTS)
+# Add the path to Blender's Python to sys.path (example path: Blender 3.6 LTS, MacOS directory)
 blender_python_path = "/Applications/Blender.app/Contents/Resources/3.6/python/lib/python3.10"
 sys.path.append(blender_python_path)
 
