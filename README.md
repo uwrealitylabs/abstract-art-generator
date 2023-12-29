@@ -22,7 +22,7 @@ Install the "Blender Development" extension for Visual Studio Code. Open the Ext
 
 ### Locate Blender Python Interpreter
 
-Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g., /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
+Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g. on MacOS, /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
 
 ### Configure Python Interpreter in Visual Studio Code
 
@@ -36,15 +36,15 @@ Restart Visual Studio Code to apply the changes.
 
 #### Windows
 
-1. Find the path to your Blender installation (e.g., `C:\Program Files\Blender Foundation\Blender`).
+1. Find the path to your Blender installation (usually `C:\Program Files\Blender Foundation\Blender 3.6`).
 
-2. Copy the path to the Blender directory.
+2. Copy the path to the Blender directory. Don't copy the executable path, just the file directory.
 
-3. Right-click on "This PC" or "Computer" on your desktop or in File Explorer and select "Properties."
+3. Hit the Windows key and search for 'env'. You should see "Edit the system environment variables".
 
-4. Click on "Advanced system settings" on the left.
+4. Click or select it by pressing Enter. This should open the Advanced tab of System Properties.
 
-5. Click the "Environment Variables" button.
+5. Click the "Environment Variables..." button in the lower right.
 
 6. In the "System variables" section, scroll down and find the "Path" variable. Select it and click "Edit."
 
