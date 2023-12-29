@@ -45,5 +45,5 @@ bpy.ops.render.render(write_still=True)
 # Complete
 print("Rendering is complete.")
 
-# Run using:
+# Run using the following CLI line while cd'd into the abstract-art-generator file (or open a terminal there):
 # blender -b art.blend -P scripts/render.py
