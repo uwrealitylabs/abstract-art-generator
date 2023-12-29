@@ -46,7 +46,7 @@ for obj_file in obj_files:
     # Set random scale (size) for the object
     scale_factor = random.uniform(0.1, 1.0)
     imported_object.scale = (scale_factor, scale_factor, scale_factor)
-
+ 
     # Set random position for the object
     imported_object.location = (
         random.uniform(-5, 5),
