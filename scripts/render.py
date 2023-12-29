@@ -1,5 +1,7 @@
 import sys
 import os
+import bpy
+import random
 
 # Detect operating system
 is_windows = sys.platform == "win32"
@@ -17,9 +19,6 @@ else:
 # Add the path to Blender's Python to sys.path
 sys.path.append(blender_python_path)
 
-# Import bpy
-import bpy
-
 # Name
 print("Abstract Art Generator by kennynahh and itsanantk")
 
@@ -33,11 +32,27 @@ bpy.ops.object.select_by_type(type='MESH')
 bpy.ops.object.delete()
 
 # Asset import (all obj files)
-obj_path = "assets/obj"  # Corrected the path
-obj_files = [f for f in os.listdir(obj_path) if f.endswith('.obj')]  # Corrected the variable name
+obj_path = "assets/obj"
+obj_files = [f for f in os.listdir(obj_path) if f.endswith('.obj')]
+
+# Set random sizes and positions for imported objects
 for obj_file in obj_files:
     obj_file_path = os.path.join(obj_path, obj_file)
     bpy.ops.import_scene.obj(filepath=obj_file_path)
+
+    # Get the last imported object (assuming it's the one just imported)
+    imported_object = bpy.context.active_object
+
+    # Set random scale (size) for the object
+    scale_factor = random.uniform(0.1, 1.0)
+    imported_object.scale = (scale_factor, scale_factor, scale_factor)
+
+    # Set random position for the object
+    imported_object.location = (
+        random.uniform(-5, 5),
+        random.uniform(-5, 5),
+        random.uniform(0, 5)
+    )
 
 # Render
 bpy.ops.render.render(write_still=True)
