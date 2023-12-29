@@ -22,7 +22,7 @@ Install the "Blender Development" extension for Visual Studio Code. Open the Ext
 
 ### Locate Blender Python Interpreter
 
-Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g. on MacOS, /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
+Find the path to Blender's Python interpreter, typically located within the Blender application package (e.g. on macOS, /Applications/Blender.app/Contents/Resources/3.10/python/bin/python3.10).
 
 ### Configure Python Interpreter in Visual Studio Code
 
@@ -32,7 +32,7 @@ Open Visual Studio Code, go to the command palette (Ctrl+Shift+P), and run the c
 
 Restart Visual Studio Code to apply the changes.
 
-### Add Blender to your PATH environment (optional)
+### Add Blender to your PATH environment
 
 #### Windows
 
@@ -79,3 +79,7 @@ Restart Visual Studio Code to apply the changes.
 7. Open a new terminal and type `blender` to verify that Blender launches.
 
 Keep in mind that the exact steps may vary depending on your system configuration and the specific shell you're using.
+
+## Run the script
+
+You should now be able to run the python script using `blender -b art.blend -P scripts/render.py`. This command should be run inside the cloned repository folder. Alternatively, if the steps above did not work for you, you can run the script inside of Blender's built-in script editor.
