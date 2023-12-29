@@ -4,9 +4,13 @@ The Abstract Art Generator does exactly what it sounds like - it's designed to g
 
 ## Setting up the environment
 
+Clone the repository.
+
 ### Install Blender
 
 Download and install Blender from the official Blender website: [Blender Download](https://www.blender.org/download/)
+
+We used the Blender 3.6 LTS version. In the render.py file, the example directories for "blender_python_path" MUST be changed if you are using a different version or have installed in a different directory.
 
 ### Open Visual Studio Code
 

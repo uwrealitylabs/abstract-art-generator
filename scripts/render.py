@@ -1,8 +1,20 @@
 import sys
 import os
 
-# Add the path to Blender's Python to sys.path (example path: Blender 3.6 LTS, MacOS directory)
-blender_python_path = "/Applications/Blender.app/Contents/Resources/3.6/python/lib/python3.10"
+# Detect operating system
+is_windows = sys.platform == "win32"
+is_macos = sys.platform == "darwin"
+
+# Example paths for Blender 3.6 LTS
+if is_windows:
+    blender_python_path = r"C:\Program Files\Blender Foundation\Blender 3.6\3.6\python\lib\python3.10"
+elif is_macos:
+    blender_python_path = "/Applications/Blender.app/Contents/Resources/3.6/python/lib/python3.10"
+else:
+    # Add more cases for other operating systems if needed
+    raise ValueError("Unsupported operating system")
+
+# Add the path to Blender's Python to sys.path
 sys.path.append(blender_python_path)
 
 # Import bpy
