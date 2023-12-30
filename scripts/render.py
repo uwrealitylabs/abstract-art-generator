@@ -93,12 +93,12 @@ def findBoundingBoxLocation(parent):
             min_z = min(min_z, ((child.location.z-(child.dimensions.y/2))*scale_factor))
             max_z = max(max_z, ((child.location.z+(child.dimensions.y/2))*scale_factor))
         else:
-            min_x = min(min_x, (((child.dimensions.x/2))*scale_factor))
-            max_x = max(max_x, (((child.dimensions.x/2))*scale_factor))
-            min_y = min(min_y, (((child.dimensions.z/2))*scale_factor))
-            max_y = max(max_y, (((child.dimensions.z/2))*scale_factor))
-            min_z = min(min_z, (((child.dimensions.y/2))*scale_factor))
-            max_z = max(max_z, (((child.dimensions.y/2))*scale_factor))
+            min_x = min(min_x, ((0-(child.dimensions.x/2))*scale_factor))
+            max_x = max(max_x, ((0+(child.dimensions.x/2))*scale_factor))
+            min_y = min(min_y, ((0-(child.dimensions.z/2))*scale_factor))
+            max_y = max(max_y, ((0+(child.dimensions.z/2))*scale_factor))
+            min_z = min(min_z, ((0-(child.dimensions.y/2))*scale_factor))
+            max_z = max(max_z, ((0+(child.dimensions.y/2))*scale_factor))
         print(parent.location, parent.children, child, parent.location, child.location*scale_factor, child.dimensions*scale_factor, scale_factor)
     x = parent.location.x + (max_x+min_x)/2
     y = parent.location.y + (max_y+min_y)/2
@@ -106,7 +106,7 @@ def findBoundingBoxLocation(parent):
     print(x,y,z)
     return (x, y, z)
 
-"""
+
 # Find the offset of parent class
 def findBoundingBoxOffset(parent):
     min_x = 99e99
@@ -116,18 +116,26 @@ def findBoundingBoxOffset(parent):
     min_z = 99e99
     max_z = 0
     for child in parent.children:
-        min_x = min(min_x, (child.location.x-((child.dimensions.x/2)*scale_factor)))
-        max_x = max(max_x, (child.location.x+((child.dimensions.x/2)*scale_factor)))
-        min_y = min(min_y, (child.location.y-((child.dimensions.z/2)*scale_factor)))
-        max_y = max(max_y, (child.location.y+((child.dimensions.z/2)*scale_factor)))
-        min_z = min(min_z, (child.location.z-((child.dimensions.y/2)*scale_factor)))
-        max_z = max(max_z, (child.location.z+((child.dimensions.y/2)*scale_factor)))
+        if len(parent.children) > 1:
+            min_x = min(min_x, ((child.location.x-(child.dimensions.x/2))*scale_factor))
+            max_x = max(max_x, ((child.location.x+(child.dimensions.x/2))*scale_factor))
+            min_y = min(min_y, ((child.location.y-(child.dimensions.z/2))*scale_factor))
+            max_y = max(max_y, ((child.location.y+(child.dimensions.z/2))*scale_factor))
+            min_z = min(min_z, ((child.location.z-(child.dimensions.y/2))*scale_factor))
+            max_z = max(max_z, ((child.location.z+(child.dimensions.y/2))*scale_factor))
+        else:
+            min_x = min(min_x, ((0-(child.dimensions.x/2))*scale_factor))
+            max_x = max(max_x, ((0+(child.dimensions.x/2))*scale_factor))
+            min_y = min(min_y, ((0-(child.dimensions.z/2))*scale_factor))
+            max_y = max(max_y, ((0+(child.dimensions.z/2))*scale_factor))
+            min_z = min(min_z, ((0-(child.dimensions.y/2))*scale_factor))
+            max_z = max(max_z, ((0+(child.dimensions.y/2))*scale_factor))
     x = (max_x+min_x)/2
     y = (max_y+min_y)/2
     z = (max_z+min_z)/2
     
     return (x, y, z)
-"""
+
 
 
 # Asset import (all obj files)
@@ -144,7 +152,7 @@ for obj_file in obj_files:
     scale_factor = 1
     # Debuging purposes only
     
-    if x != 0:
+    if x != 10:
         x += 1
         #continue
     x+=1
@@ -168,7 +176,7 @@ for obj_file in obj_files:
         mat = bpy.data.materials.get(material_name)
           
         bpy.context.view_layer.objects.active = imported_object
-        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
+        bpy.ops.object.origin_set(type='ORIGIN_CENTER_OF_MASS', center='BOUNDS')
         #imported_object.location = (0,0,0)
         imported_object.parent = parent_object
 
@@ -221,12 +229,14 @@ for obj_file in obj_files:
     searching = True
     print(findBoundingBoxDimensions(parent_object), parent_object.dimensions, "parent size")
     print("test", parent_object.location, findBoundingBoxLocation(parent_object), scale_factor, "new function")    
-
+    offset = findBoundingBoxOffset(parent_object)
+    print(offset, "OFFSET")
+    offset = (0, 0, 0)
     while searching:
         parent_object.location = (
-            random.uniform(-location_range, location_range),
-            random.uniform(0, 0),
-            random.uniform(-location_range/1.5, location_range/4)
+            random.uniform(-location_range, location_range)-offset[0],
+            random.uniform(0, 0)-offset[1],
+            random.uniform(-location_range/1.5, location_range/4)-offset[2]
         )
         colliding = False
         for i in range(len(dimensions)):
@@ -251,12 +261,12 @@ for obj_file in obj_files:
             print(parent_object.location, bbd)
 
     print(findBoundingBoxLocation(parents[0]),findBoundingBoxLocation(parent_object), parents[0], parent_object, "new function")    
-    #parent_object.location = (-2, 0, 0)
-    print(findBoundingBoxLocation(parent_object), parent_object.location)
+    #parent_object.location = (0-offset[0], 0-offset[1], 0-offset[2])
+    print(findBoundingBoxLocation(parent_object), parent_object.location, findBoundingBoxOffset(parent_object), "LOCATIONNNN")
         
 camera = bpy.data.objects["Camera"]
-camera.location = (0, -10, 3)
-c = (72, 0, 0)
+camera.location = (0, -11, 1.5)
+c = (80, 0, 0)
 pi = math.pi
 
 scene = bpy.data.scenes["Scene"]
